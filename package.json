@@ -1,0 +1,72 @@
+{
+  "name": "moth",
+  "homepage": "https://QianMoth.github.io/",
+  "version": "0.1.4",
+  "private": true,
+  "dependencies": {
+    "csstype": "^2.6.5",
+    "fbjs": "^3.0.4",
+    "intl": "^1.2.5",
+    "react": "^16.4.1",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-autosize-textarea": "^7.0.0",
+    "react-dom": "^16.4.2",
+    "react-helmet": "^5.2.0",
+    "react-icons": "^3.0.4",
+    "react-intl": "^2.4.0",
+    "react-intl-redux": "^2.0.1",
+    "react-markdown": "^8.0.3",
+    "react-redux": "^7.0.3",
+    "react-responsive": "^7.0.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^5.0.1",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^5.10.0",
+    "styled-components": "^4.2.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "@types/node": "^12.0.4",
+    "@types/react": "^16.8.19",
+    "@types/react-addons-css-transition-group": "^15.0.5",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-helmet": "^5.0.8",
+    "@types/react-intl": "^2.3.18",
+    "@types/react-redux": "^7.0.9",
+    "@types/react-responsive": "^3.0.3",
+    "@types/react-router-dom": "^4.3.3",
+    "@types/redux-logger": "^3.0.7",
+    "@types/styled-components": "^4.1.16",
+    "gh-pages": "^2.0.1",
+    "prettier": "^1.18.2",
+    "redux-devtools": "^3.4.1",
+    "tslint": "^5.17.0",
+    "tslint-jike-node": "^0.0.17",
+    "typescript": "^3.5.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "npm run lint && react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "clean": "rm -r node_modules && rm package-lock.json",
+    "predeploy": "npm run build",
+    "lint": "tslint --project .",
+    "deploy": "gh-pages -d build",
+    "prettier": "prettier --check \"src/**/*\" --write",
+    "fix-lint": "tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}'"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
