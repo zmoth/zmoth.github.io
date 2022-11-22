@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
+import ShiftTextComponent from '../components/shiftTextComponent'
 import './homePage.css'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getTheme } from '../theme'
-import { defineMessages, InjectedIntl, injectIntl } from 'react-intl'
+import { InjectedIntl, defineMessages, injectIntl } from 'react-intl'
 import AppHeader from '../components/appHeader'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { MdSettings } from 'react-icons/md'
 import styled from 'styled-components'
 import { getQueryParamsFromUrl } from '../utils/urlUtil'
-import TypingText from '../components/typingText'
 
 const Root = styled.div`
   justify-content: center;
@@ -53,8 +53,7 @@ class HomePage extends Component<Props, State> {
       slogan = intl.formatMessage(messages.defaultSlogan)
     }
 
-    return slogan
-      .split('\n')
+    return slogan.split('\n')
       .map(item => item.trim())
       .filter(item => item.length > 0)
   }
@@ -72,12 +71,9 @@ class HomePage extends Component<Props, State> {
       this.mouseCountdown = undefined
     }
     this.mouseCountdown = window.setTimeout(
-      () =>
-        this.setState({
-          idle: true,
-        }),
-      2000,
-    )
+      () => this.setState({
+        idle: true,
+      }), 2000)
   }
 
   componentWillUnmount() {
@@ -92,17 +88,14 @@ class HomePage extends Component<Props, State> {
 
     const settingsIcon = (
       <Link to={'/settings'}>
-        <h1>
-          <MdSettings
-            style={{
-              color: palette.textSecondary,
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          />
-        </h1>
+        <h1><MdSettings
+          style={{
+            color: palette.textSecondary,
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}/></h1>
       </Link>
     )
     return (
@@ -111,29 +104,25 @@ class HomePage extends Component<Props, State> {
           background: palette.background,
           cursor: this.state.idle ? 'none' : 'default',
         }}
-        onMouseMove={this.handleMouseMove}
-      >
+        onMouseMove={this.handleMouseMove}>
         <ReactCSSTransitionGroup
           transitionLeaveTimeout={500}
           transitionEnterTimeout={300}
-          transitionName='fade'
-        >
-          {this.state.idle ? (
-            undefined
-          ) : (
-            <AppHeader style={{ position: 'absolute', top: 0 }} rightExtra={settingsIcon}/>
-          )}
+          transitionName='fade'>
+          {this.state.idle ? undefined :
+            <AppHeader
+              style={{ position: 'absolute', top: 0, }}
+              rightExtra={settingsIcon}/>
+          }
         </ReactCSSTransitionGroup>
-        <main
-          style={{
-            boxSizing: 'border-box',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <TypingText
+        <main style={{
+          boxSizing: 'border-box',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <ShiftTextComponent
             textAlign={'center'}
             fontColor={palette.textPrimary}
             fontSize={72}
