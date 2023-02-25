@@ -4,9 +4,9 @@ import HelloWorld from './components/HelloWorld.vue'
 
 const awesome = ref(true)
 
-let timer = setInterval(() => {
+setInterval(() => {
   awesome.value = !awesome.value
-}, 2500)
+}, 3000)
 </script>
 
 <template>
@@ -17,12 +17,9 @@ let timer = setInterval(() => {
 </template>
 
 <style scoped>
-.fade-enter-active {
-  transition: all 0.5s ease-out;
-}
-
+.fade-enter-active,
 .fade-leave-active {
-  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 300ms ease-out;
 }
 
 .fade-enter-from,
