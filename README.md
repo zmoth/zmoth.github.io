@@ -10,7 +10,7 @@
 git clone https://github.com/zmoth/zmoth.github.io.git
 
 npm install
-npm run dev
+npm run dev --open
 ```
 
 如果您想要使用自己的域名可以修改 CNAME(/public/CNAME)，如果您不需要可以直接删除 CNAME 文件。
