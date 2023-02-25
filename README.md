@@ -1,38 +1,18 @@
-# I Love Works
+# Vue 3 + TypeScript + Vite
 
-[visit site](https://ilove.works)
+This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-## Usage
+## Recommended IDE Setup
 
-### Url Params
+- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-name  |values
-------|--------------------
-lang  |`zh-hant`, `zh-hans`, `en`
-slogan|Any text you want to show, [Reference](https://ilove.works/settings/slogan). In addition, you can use <code>&#124;&#124;</code> as paragraph break.  
-theme |`light`, `dark`, `white`, `black`, `chrome-dark`
+## Type Support For `.vue` Imports in TS
 
-### Use as ScreenSaver
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-#### MacOS
+If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
-1. Install [liquidx/webviewscreensaver](https://github.com/liquidx/webviewscreensaver)
-2. Add this site's url (example: https://ilove.works/?theme=black) to urls
-
-![](https://github.com/sorcererxw/iloveworks/blob/master/resources/macos-screensaver-guide.png?raw=true)
-
-## develop
-
-### Run on local
-1. fork and clone this repository
-2. `npm install`
-3. `npm run build`
-4. `npm run start`
-
-### Deploy on your github pages
-
-1. fork and clone this repository
-2. `npm install`
-3. change the `CNAME`(/public/CNAME) file to your domain
-4. change the `homepage` config in `package.json` to your github homepage (example.github.io)
-5. `npm run deploy`
+1. Disable the built-in TypeScript Extension
+   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
