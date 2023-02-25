@@ -3,8 +3,12 @@ name: Deploy
 on:
   push:
     branches: [main] #main分支在push的时候会触发
+    paths-ignore:
+      - "*.md"
   pull_request:
     branches: [main] #main分支在PR的时候会触发
+    paths-ignore:
+      - "*.md"
 
 jobs:
   build:
