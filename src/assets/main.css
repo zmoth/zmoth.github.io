@@ -36,6 +36,8 @@ body {
 h1 {
   font-size: 4.2em;
   line-height: 1.1;
+  word-break: break-all;
+  white-space: pre-line;
 }
 
 button {

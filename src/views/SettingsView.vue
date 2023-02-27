@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import config from '../../package.json'
 
 const drawer = ref(false)
-const message = ref('Moth\n织蛾')
+const message = ref('Moth\n\n织蛾')
 
 const emit = defineEmits<{
   (e: 'change', value: string): void

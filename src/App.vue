@@ -7,7 +7,7 @@ import { ref } from 'vue'
 const drawer = ref(false)
 const messages = ref<string[]>(['Moth', '织蛾'])
 function text1(v: any) {
-  messages.value = v.split('\n')
+  messages.value = v.split('\n\n')
   messages.value = messages.value.filter((i) => i && i.trim())
 }
 
