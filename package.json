@@ -2,6 +2,7 @@
   "name": "moth-project",
   "version": "0.1.1",
   "license": "MIT",
+  "author": "Moth",
   "private": true,
   "scripts": {
     "dev": "vite --open",

@@ -10,6 +10,9 @@ defineEmits<{ (e: 'change', value: string): void }>()
 function toReleaseUrl() {
   window.open('https://github.com/zmoth/zmoth.github.io/releases', '_blank')
 }
+function toGithubUrl() {
+  window.open('https://github.com/zmoth', '_blank')
+}
 </script>
 
 <template>
@@ -18,7 +21,12 @@ function toReleaseUrl() {
       <h2>Settings</h2>
     </template>
     <template #default>
-      <el-tag class="ml-2" effect="dark" @click="toReleaseUrl"> {{ config.version }}</el-tag>
+      <el-tag effect="dark" style="margin: 5px" @click="toReleaseUrl">
+        {{ config.version }}
+      </el-tag>
+      <el-tag effect="dark" style="margin: 5px" @click="toGithubUrl"> {{ config.author }}</el-tag>
+      <el-tag effect="dark" style="margin: 5px"> {{ config.license }}</el-tag>
+     
 
       <h3>Custom slogan</h3>
       <el-input
