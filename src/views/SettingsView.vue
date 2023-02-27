@@ -5,9 +5,11 @@ import config from '../../package.json'
 const drawer = ref(false)
 const message = ref('Moth\n\n织蛾')
 
-const emit = defineEmits<{
-  (e: 'change', value: string): void
-}>()
+defineEmits<{ (e: 'change', value: string): void }>()
+
+function toReleaseUrl() {
+  window.open('https://github.com/zmoth/zmoth.github.io/releases', '_blank')
+}
 </script>
 
 <template>
@@ -16,7 +18,7 @@ const emit = defineEmits<{
       <h2>Settings</h2>
     </template>
     <template #default>
-      <el-tag class="ml-2" effect="dark"> {{ config.version }}</el-tag>
+      <el-tag class="ml-2" effect="dark" @click="toReleaseUrl"> {{ config.version }}</el-tag>
 
       <h3>Custom slogan</h3>
       <el-input
