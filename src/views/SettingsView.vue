@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import config from '../../package.json'
+import { useStorage } from '@vueuse/core'
+
+const message = useStorage('my-store', 'Moth\n\n织蛾')
 
 const drawer = ref(false)
-const message = ref('Moth\n\n织蛾')
 
-defineEmits<{ (e: 'change', value: string): void }>()
+const emit = defineEmits<{ (e: 'change', value: string): void }>()
+
+emit('change', message.value)
 
 function toReleaseUrl() {
   window.open('https://github.com/zmoth/zmoth.github.io/releases', '_blank')
@@ -26,7 +30,6 @@ function toGithubUrl() {
       </el-tag>
       <el-tag effect="dark" style="margin: 5px" @click="toGithubUrl"> {{ config.author }}</el-tag>
       <el-tag effect="dark" style="margin: 5px"> {{ config.license }}</el-tag>
-     
 
       <h3>Custom slogan</h3>
       <el-input
