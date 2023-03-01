@@ -19,17 +19,11 @@ setInterval(() => {
     awesome.value = 0
   }
 }, 3000)
-
-const current = ref('HomeView')
 </script>
 
 <template>
-  <Transition name="fade" mode="out-in">
-    <component :is="current" :key="awesome" :index="awesome">
-      <div>
-        <HomeView :text="messages[awesome]" @click="drawer = true" />
-      </div>
-    </component>
+  <Transition name="fade" mode="out-in" appear>
+    <HomeView :text="messages[awesome]" :key="messages[awesome]" @click="drawer = true" />
   </Transition>
 
   <SettingsView v-model="drawer" @change="text1" />
