@@ -3,7 +3,8 @@ import HomeView from './views/HomeView.vue'
 import SettingsView from './views/SettingsView.vue'
 import { ref } from 'vue'
 
-const drawer = ref(false)
+const s = ref(false)
+const a = ref(false)
 const messages = ref<string[]>([])
 function text(e: any) {
   messages.value = e.split('\n\n')
@@ -12,8 +13,8 @@ function text(e: any) {
 </script>
 
 <template>
-  <HomeView :text="messages" @click="drawer = true" />
-  <SettingsView v-model="drawer" @change="text" />
+  <HomeView :text="messages" @click="s = true" />
+  <SettingsView :drawer="s" @change="text" @close="s = false" />
 </template>
 
 <style scoped></style>

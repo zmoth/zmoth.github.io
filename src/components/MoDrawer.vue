@@ -5,20 +5,19 @@ const props = defineProps({
 </script>
 
 <template>
-  <Transition name="modal">
-    <div v-if="show" class="modal-mask">
-      <div class="modal-container">
-        <div class="modal-header">
+  <Transition name="drawer">
+    <div v-if="show" class="drawer-mask">
+      <div class="drawer-container">
+        <div class="drawer-header">
           <slot name="header">default header</slot>
         </div>
 
-        <div class="modal-body">
+        <div class="drawer-body">
           <slot name="body">default body</slot>
         </div>
 
         <div class="modal-footer">
           <slot name="footer">
-            default footer
             <button class="modal-default-button" @click="$emit('close')">OK</button>
           </slot>
         </div>
@@ -28,7 +27,7 @@ const props = defineProps({
 </template>
 
 <style>
-.modal-mask {
+.drawer-mask {
   position: fixed;
   z-index: 9998;
   top: 0;
@@ -40,31 +39,34 @@ const props = defineProps({
   transition: opacity 0.3s ease;
 }
 
-.modal-container {
-  width: 300px;
+.drawer-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
   margin: auto;
-  padding: 20px 30px;
+  /* padding: 20px 30px; */
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
 }
 
-.modal-header h3 {
+.drawer-header h3 {
   margin-top: 0;
   color: #42b983;
 }
 
-.modal-body {
+.drawer-body {
   margin: 20px 0;
 }
 
-.modal-default-button {
+.drawer-default-button {
   float: right;
 }
 
 /*
- * 对于 transition="modal" 的元素来说
+ * 对于 transition="drawer" 的元素来说
  * 当通过 Vue.js 切换它们的可见性时
  * 以下样式会被自动应用。
  *
@@ -72,17 +74,16 @@ const props = defineProps({
  * 来体验该模态框的过渡效果。
  */
 
-.modal-enter-from {
-  opacity: 0;
+.drawer-enter-from .drawer-container,
+.drawer-leave-to .drawer-container {
+  transform: translateY(100%);
+  opacity: 1;
 }
 
-.modal-leave-to {
+.drawer-enter-from .drawer-mask,
+.drawer-leave-to .drawer-mask {
+  /* -webkit-transform: scale(1.1);
+  transform: scale(1.1); */
   opacity: 0;
-}
-
-.modal-enter-from .modal-container,
-.modal-leave-to .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
 }
 </style>

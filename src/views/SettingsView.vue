@@ -5,9 +5,13 @@ import { useStorage } from '@vueuse/core'
 
 const message = useStorage('my-store', 'Moth\n\n织蛾')
 
-const drawer = ref(false)
+const props = defineProps({
+  drawer: Boolean,
+})
 
-const emit = defineEmits<{ (e: 'change', value: string): void }>()
+const emit = defineEmits<{
+  (e: 'change', value: string): void
+}>()
 
 emit('change', message.value)
 
@@ -20,12 +24,12 @@ function toGithubUrl() {
 </script>
 
 <template>
-  <el-drawer v-model="drawer" :with-header="true" :show-close="true" direction="btt" size="100%">
+  <mo-drawer :show="props.drawer" @close="$emit('close')">
     <template #header>
       <h2>Settings</h2>
     </template>
 
-    <template #default>
+    <template #body>
       <mo-tag class="tags" @click="toReleaseUrl">
         {{ config.version }}
       </mo-tag>
@@ -43,7 +47,7 @@ function toGithubUrl() {
         @change="$emit('change', message)"
       />
     </template>
-  </el-drawer>
+  </mo-drawer>
 </template>
 
 <style scoped>
