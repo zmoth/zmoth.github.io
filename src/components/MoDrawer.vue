@@ -14,20 +14,22 @@ const isHorizontal = computed(() => props.direction === 'left' || props.directio
     <div v-if="show" class="drawer-mask">
       <div
         class="drawer-container"
-        :style="isHorizontal ? 'width: ' + distance : 'height: ' + distance"
+        :style="
+          isHorizontal
+            ? 'width: ' + distance + '; height: 100%;'
+            : 'height: ' + distance + '; width: 100%;'
+        "
       >
         <div class="drawer-header">
-          <slot name="header">default header</slot>
+          <slot name="header" />
         </div>
 
         <div class="drawer-body">
-          <slot name="body">default body</slot>
+          <slot name="body" />
         </div>
 
-        <div class="modal-footer">
-          <slot name="footer">
-            <button class="modal-default-button" @click="$emit('close')">OK</button>
-          </slot>
+        <div class="drawer-footer">
+          <slot name="footer" />
         </div>
       </div>
     </div>
@@ -40,6 +42,8 @@ const isHorizontal = computed(() => props.direction === 'left' || props.directio
   z-index: 9998;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -49,13 +53,10 @@ const isHorizontal = computed(() => props.direction === 'left' || props.directio
 
 .drawer-container {
   position: absolute;
-  width: 100%;
-  height: 100%;
   bottom: 0;
   margin: auto;
-  /* padding: 20px 30px; */
+  padding: auto;
   background-color: #fff;
-  border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
 }
@@ -69,22 +70,9 @@ const isHorizontal = computed(() => props.direction === 'left' || props.directio
   margin: 20px 0;
 }
 
-.drawer-default-button {
-  float: right;
-}
-
-/*
- * 对于 transition="drawer" 的元素来说
- * 当通过 Vue.js 切换它们的可见性时
- * 以下样式会被自动应用。
- *
- * 你可以简单地通过编辑这些样式
- * 来体验该模态框的过渡效果。
- */
-
 .drawer-enter-from .drawer-container,
 .drawer-leave-to .drawer-container {
-  transform: translateY(100%);
+  transform: translate(0, 100%);
   opacity: 1;
 }
 
