@@ -12,7 +12,6 @@ declare module '@vue/runtime-core' {
     ElDrawer: typeof import('element-plus/es')['ElDrawer']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElTag: typeof import('element-plus/es')['ElTag']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
-    IconEcosystem: typeof import('./src/components/icons/IconEcosystem.vue')['default']
+    MoSlogen: typeof import('./src/components/MoSlogen.vue')['default']
   }
 }

@@ -25,11 +25,13 @@ function toGithubUrl() {
       <h2>Settings</h2>
     </template>
     <template #default>
-      <el-tag effect="dark" style="margin: 5px" @click="toReleaseUrl">
+      <el-tag class="tags" effect="dark" @click="toReleaseUrl">
         {{ config.version }}
       </el-tag>
-      <el-tag effect="dark" style="margin: 5px" @click="toGithubUrl"> {{ config.author }}</el-tag>
-      <el-tag effect="dark" style="margin: 5px"> {{ config.license }}</el-tag>
+      <el-tag class="tags" effect="dark" @click="toGithubUrl">
+        {{ config.author }}
+      </el-tag>
+      <el-tag class="tags" effect="dark"> {{ config.license }}</el-tag>
 
       <h3>Custom slogan</h3>
       <el-input
@@ -44,6 +46,9 @@ function toGithubUrl() {
 </template>
 
 <style scoped>
+.tags {
+  margin: 5px;
+}
 @media (min-width: 1024px) {
   .about {
     min-height: 100vh;
