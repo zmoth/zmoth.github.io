@@ -9,9 +9,6 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    ElDrawer: typeof import('element-plus/es')['ElDrawer']
-    ElInput: typeof import('element-plus/es')['ElInput']
-    ElTag: typeof import('element-plus/es')['ElTag']
     MoDrawer: typeof import('./src/components/MoDrawer.vue')['default']
     MoSlogen: typeof import('./src/components/MoSlogen.vue')['default']
     MoTag: typeof import('./src/components/MoTag.vue')['default']
