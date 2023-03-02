@@ -24,14 +24,15 @@ function toGithubUrl() {
     <template #header>
       <h2>Settings</h2>
     </template>
+
     <template #default>
-      <el-tag class="tags" effect="dark" @click="toReleaseUrl">
+      <mo-tag class="tags" @click="toReleaseUrl">
         {{ config.version }}
-      </el-tag>
-      <el-tag class="tags" effect="dark" @click="toGithubUrl">
+      </mo-tag>
+      <mo-tag class="tags" @click="toGithubUrl">
         {{ config.author }}
-      </el-tag>
-      <el-tag class="tags" effect="dark"> {{ config.license }}</el-tag>
+      </mo-tag>
+      <mo-tag class="tags"> {{ config.license }}</mo-tag>
 
       <h3>Custom slogan</h3>
       <el-input
