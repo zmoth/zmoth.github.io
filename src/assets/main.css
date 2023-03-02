@@ -35,3 +35,10 @@ body {
     background-color: #f5f5f5;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #d3cfca;
+    background-color: #1e2021;
+  }
+}

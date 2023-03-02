@@ -38,8 +38,7 @@ function toGithubUrl() {
       <mo-tag class="tags"> {{ config.license }}</mo-tag>
 
       <h3>Custom slogan</h3>
-      <!-- <mo-textarea :text="message" @change="$emit('change', message)" /> -->
-      <textarea v-model.trim="message" rows="10" @change="emit('change', message)"></textarea>
+      <mo-textarea v-model="message" @change="emit"></mo-textarea>
     </template>
   </mo-drawer>
 </template>
@@ -47,21 +46,6 @@ function toGithubUrl() {
 <style scoped>
 .tags {
   margin: 5px;
-}
-
-textarea {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  width: 80%;
-  max-width: 80%;
-  min-width: 80%;
-  line-height: 1.5;
-  font-size: 1rem;
-  font-weight: 400;
-  letter-spacing: 1px;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-shadow: 1px 1px 1px #999;
 }
 
 @media (min-width: 1024px) {

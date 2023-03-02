@@ -1,25 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
 const props = defineProps({
-  text: String,
+  modelValue: String,
 })
 
-const emit = defineEmits(['str'])
+const emit = defineEmits(['update:modelValue'])
 
-// function emitValue(e: string) {
-//   let value: string = e
-//   emit('update:text', value)
-// }
+function emitValue(e: Event) {
+  let value: string = (e.target as HTMLInputElement).value
+  emit('update:modelValue', value)
+}
 </script>
 
 <template>
-  <textarea v-model.trim="text"></textarea>
+  <textarea :value="modelValue" @change="emitValue" rows="10" />
 </template>
 
 <style scoped>
 textarea {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: inherit;
   width: 80%;
   max-width: 80%;
   min-width: 80%;
