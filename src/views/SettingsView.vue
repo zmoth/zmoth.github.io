@@ -41,7 +41,7 @@ function toLicenseUrl() {
 <template>
   <mo-drawer :show="props.drawer" distance="100%" @close="$emit('close')">
     <template #header>
-      <h2>Settings</h2>
+      <h1>Setting</h1>
       <div>
         <mo-tag class="tags" @click="toReleaseUrl">
           {{ config.version }}
@@ -57,9 +57,15 @@ function toLicenseUrl() {
 
     <template #body>
       <div class="setting-content">
-        <h3>Custom Slogan</h3>
-        <mo-textarea v-model="message" @change="emitMessage"></mo-textarea>
-        <button class="close-button" @click="$emit('close')">OK</button>
+        <h2>Custom Slogan</h2>
+        <div>
+          <mo-textarea
+            v-model="message"
+            placeholder="\n\n division page"
+            @change="emitMessage"
+          ></mo-textarea>
+          <div class="close-button" @click="$emit('close')">OK</div>
+        </div>
       </div>
     </template>
   </mo-drawer>
@@ -75,26 +81,26 @@ function toLicenseUrl() {
   padding: 0 10%;
 }
 
-.setting-content h3 {
+.setting-content h2 {
   float: left;
 }
 
-.setting-content button {
+.setting-content .close-button {
   float: right;
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.4em 1.2em;
   font-size: 1.2em;
   font-weight: 600;
   background-color: #e0e3f3;
   cursor: pointer;
   transition: border-color 0.25s;
 }
-.setting-content button:hover {
+.setting-content .close-button:hover {
   border-color: #42b983;
 }
-.setting-content button:focus,
-.setting-content button:focus-visible {
+.setting-content .close-button:focus,
+.setting-content .close-button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 

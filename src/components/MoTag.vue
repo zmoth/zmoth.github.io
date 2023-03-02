@@ -1,13 +1,14 @@
 <script setup lang="ts"></script>
 
 <template>
-  <button class="tag">
+  <span class="tag">
     <slot />
-  </button>
+  </span>
 </template>
 
 <style scoped>
 .tag {
+  color: #f5f5f5;
   border-radius: 8px;
   border: 2px solid transparent;
   padding: 0.6em 1.2em;
