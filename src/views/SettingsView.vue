@@ -2,7 +2,9 @@
 import config from '../../package.json'
 import { useStorage } from '@vueuse/core'
 
-const message = useStorage('my-store', 'Moth\n\n织蛾')
+const defineText = 'Moth\n\n织蛾'
+
+const message = useStorage('my-store', defineText)
 
 const props = defineProps({
   drawer: Boolean,
@@ -12,7 +14,15 @@ const emit = defineEmits<{
   (e: 'change', value: string): void
 }>()
 
-emit('change', message.value)
+const emitMessage = () => {
+  let s: string = message.value.trim()
+  if (s === '' || s === null || s.length === 0 || s === undefined) {
+    message.value = defineText
+  }
+  emit('change', message.value)
+}
+
+emitMessage()
 
 function toReleaseUrl() {
   window.open('https://github.com/zmoth/zmoth.github.io/releases', '_blank')
@@ -48,7 +58,7 @@ function toLicenseUrl() {
     <template #body>
       <div class="setting-content">
         <h3>Custom Slogan</h3>
-        <mo-textarea v-model="message" @change="emit('change', message)"></mo-textarea>
+        <mo-textarea v-model="message" @change="emitMessage"></mo-textarea>
         <button class="close-button" @click="$emit('close')">OK</button>
       </div>
     </template>
