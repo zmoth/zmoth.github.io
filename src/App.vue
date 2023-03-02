@@ -4,7 +4,6 @@ import SettingsView from './views/SettingsView.vue'
 import { ref } from 'vue'
 
 const s = ref(false)
-const a = ref(false)
 const messages = ref<string[]>([])
 function text(e: any) {
   messages.value = e.split('\n\n')

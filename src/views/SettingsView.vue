@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import config from '../../package.json'
 import { useStorage } from '@vueuse/core'
 
@@ -39,13 +38,8 @@ function toGithubUrl() {
       <mo-tag class="tags"> {{ config.license }}</mo-tag>
 
       <h3>Custom slogan</h3>
-      <el-input
-        v-model="message"
-        :autosize="{ minRows: 5, maxRows: 10 }"
-        type="textarea"
-        placeholder="Please input"
-        @change="$emit('change', message)"
-      />
+      <!-- <mo-textarea :text="message" @change="$emit('change', message)" /> -->
+      <textarea v-model.trim="message" rows="10" @change="emit('change', message)"></textarea>
     </template>
   </mo-drawer>
 </template>
@@ -54,6 +48,22 @@ function toGithubUrl() {
 .tags {
   margin: 5px;
 }
+
+textarea {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  width: 80%;
+  max-width: 80%;
+  min-width: 80%;
+  line-height: 1.5;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px #999;
+}
+
 @media (min-width: 1024px) {
   .about {
     min-height: 100vh;

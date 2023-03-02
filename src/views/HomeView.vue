@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import Slogen from '../components/Slogen.vue'
 import { ref } from 'vue'
 
 const props = defineProps<{ text: string[] }>()
