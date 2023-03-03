@@ -52,6 +52,7 @@ const isHorizontal = computed(() => props.direction === 'left' || props.directio
 }
 
 .drawer-container {
+  overflow: auto;
   position: absolute;
   bottom: 0;
   background-color: #f5f5f5;

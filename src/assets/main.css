@@ -29,6 +29,12 @@ body {
   text-align: center;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background-color: transparent;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
