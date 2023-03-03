@@ -57,7 +57,7 @@ function toLicenseUrl() {
 
     <template #body>
       <div class="setting-content">
-        <h2>Custom Slogan</h2>
+        <h2>Slogan</h2>
         <div>
           <mo-textarea
             v-model="message"
@@ -90,9 +90,9 @@ function toLicenseUrl() {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.4em 1.2em;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 600;
-  background-color: #e0e3f3;
+  background-color: #ccc;
   cursor: pointer;
   transition: border-color 0.25s;
 }

@@ -17,5 +17,6 @@ defineProps<{ slogen: string }>()
   word-break: break-all;
   white-space: pre-line;
   user-select: none;
+  cursor: pointer;
 }
 </style>

@@ -14,7 +14,7 @@ setInterval(() => {
 
 <template>
   <Transition name="fade" mode="out-in" appear>
-    <mo-slogen :slogen="props.text[count]" :key="props.text[count]" />
+    <mo-slogen :slogen="props.text[count]" :key="count" />
   </Transition>
 </template>
 

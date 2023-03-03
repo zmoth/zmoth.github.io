@@ -54,9 +54,10 @@ const isHorizontal = computed(() => props.direction === 'left' || props.directio
 .drawer-container {
   position: absolute;
   bottom: 0;
-  background-color: #fff;
+  background-color: #f5f5f5;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
+  user-select: none;
 }
 
 .drawer-header {

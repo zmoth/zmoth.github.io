@@ -14,13 +14,21 @@ function emitValue(e: Event) {
 </script>
 
 <template>
-  <textarea :value="modelValue" :rows="rows" :placeholder="placeholder" @change="emitValue" />
+  <textarea
+    :value="modelValue"
+    :spellcheck="false"
+    :rows="rows"
+    :placeholder="placeholder"
+    @change="emitValue"
+  />
 </template>
 
 <style scoped>
 textarea {
   font-family: inherit;
   font-size: 1.2rem;
+  color: inherit;
+  background-color: initial;
   width: 100%;
   min-width: 100%;
   max-width: 100%;
