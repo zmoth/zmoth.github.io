@@ -1,8 +1,14 @@
 <script setup lang="ts">
+import { ref, onMounted, nextTick } from 'vue'
+
+const textarea = ref<HTMLInputElement | null>(null)
+
 const props = defineProps({
   modelValue: String,
-  rows: { type: Number, default: 10 },
   placeholder: { type: String, default: '' },
+  autosize: { type: [Boolean], default: false },
+  disabled: { type: Boolean, default: false },
+  spellcheck: { type: Boolean, default: false },
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -11,15 +17,29 @@ function emitValue(e: Event) {
   let value: string = (e.target as HTMLInputElement).value
   emit('update:modelValue', value)
 }
+
+function resizeTextarea() {
+  if (props.autosize === false) return
+  if (textarea === null || textarea.value === undefined || textarea.value === null) return
+  textarea.value.style.height = 'inherit' // 删除
+  textarea.value.style.height = textarea.value.scrollHeight + 'px'
+}
+
+onMounted(() => {
+  if (textarea === null || textarea.value === undefined || textarea.value === null) return
+  nextTick(resizeTextarea)
+})
 </script>
 
 <template>
   <textarea
+    ref="textarea"
     :value="modelValue"
-    :spellcheck="false"
-    :rows="rows"
+    :spellcheck="spellcheck"
     :placeholder="placeholder"
+    @input="resizeTextarea"
     @change="emitValue"
+    :disabled="disabled"
   />
 </template>
 
@@ -32,12 +52,12 @@ textarea {
   width: 100%;
   min-width: 100%;
   max-width: 100%;
+  height: inherit;
   min-height: 10rem;
   box-sizing: border-box;
   padding: 8px 16px;
   line-height: 1.8rem;
   resize: vertical;
-  /* overflow: hidden; */
   border-radius: 8px;
   border-width: 1px;
   border-style: solid;

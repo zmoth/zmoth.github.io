@@ -63,6 +63,7 @@ function toLicenseUrl() {
             v-model="message"
             placeholder="\n\n division page"
             @change="emitMessage"
+            autosize
           ></mo-textarea>
           <div class="close-button" @click="$emit('close')">OK</div>
         </div>
