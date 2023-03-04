@@ -24,7 +24,7 @@ function handeContainerTouchMove(e: TouchEvent) {
   let moveEndY = e.changedTouches[0].pageY
   let Y = moveEndY - move //如果值为正,则代表手指下滑,反则则为上滑,为0则表示点击
   if (Y > 0) {
-    emit('close')
+    // emit('close')
   }
 }
 </script>
