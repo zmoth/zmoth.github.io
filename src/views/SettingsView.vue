@@ -2,7 +2,7 @@
 import config from '../../package.json'
 import { useStorage } from '@vueuse/core'
 
-const defineText = '织蛾\n\nMoth'
+const defineText = '织蛾\n\nMoth\n\nが'
 
 const message = useStorage('my-store', defineText)
 
