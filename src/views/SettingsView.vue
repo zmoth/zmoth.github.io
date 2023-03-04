@@ -2,7 +2,7 @@
 import config from '../../package.json'
 import { useStorage } from '@vueuse/core'
 
-const defineText = 'Moth\n\n织蛾'
+const defineText = '织蛾\n\nMoth'
 
 const message = useStorage('my-store', defineText)
 
@@ -41,7 +41,10 @@ function toLicenseUrl() {
 <template>
   <mo-drawer :show="props.drawer" distance="100%" @close="$emit('close')">
     <template #header>
-      <h1>Setting</h1>
+      <h1>Settings</h1>
+    </template>
+
+    <template #body>
       <div>
         <mo-tag class="tags" @click="toReleaseUrl">
           {{ config.version }}
@@ -53,9 +56,6 @@ function toLicenseUrl() {
           {{ config.license }}
         </mo-tag>
       </div>
-    </template>
-
-    <template #body>
       <div class="setting-content">
         <h2>Slogan</h2>
         <div>
@@ -65,7 +65,7 @@ function toLicenseUrl() {
             @change="emitMessage"
             autosize
           ></mo-textarea>
-          <div class="close-button" @click="$emit('close')">OK</div>
+          <span class="close-button" @click="$emit('close')">OK</span>
         </div>
       </div>
     </template>
@@ -103,13 +103,5 @@ function toLicenseUrl() {
 .setting-content .close-button:focus,
 .setting-content .close-button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
 }
 </style>
