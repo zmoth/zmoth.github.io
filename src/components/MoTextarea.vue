@@ -20,13 +20,13 @@ function emitValue(e: Event) {
 
 function resizeTextarea() {
   if (props.autosize === false) return
-  if (textarea === null || textarea.value === undefined || textarea.value === null) return
+  if (textarea.value === null || textarea.value === undefined) return
   textarea.value.style.height = 'inherit' // 删除
   textarea.value.style.height = textarea.value.scrollHeight + 'px'
 }
 
 onMounted(() => {
-  if (textarea === null || textarea.value === undefined || textarea.value === null) return
+  if (textarea.value === null || textarea.value === undefined) return
   nextTick(resizeTextarea)
 })
 </script>

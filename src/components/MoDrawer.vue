@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive, computed } from 'vue'
+import { ref, computed } from 'vue'
 const props = defineProps({
   show: Boolean, // 是否显示 Drawer
   direction: { type: String, default: 'bottom', values: ['top', 'bottom', 'left', 'right'] },
