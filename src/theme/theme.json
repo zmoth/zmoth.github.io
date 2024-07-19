@@ -1,0 +1,48 @@
+{
+  "header": {
+    "height": 60
+  },
+  "tags": {
+    "visible": true,
+    "height": 50
+  },
+  "naiveThemeOverrides": {
+    "common": {
+      "lightColor": "#FFFFFF",
+      "lightColorSoft": "#f9f9f9",
+      "lightColorMute": "#f2f2f2",
+      "darkColor": "#181818",
+      "darkColorSoft": "#222222",
+      "darkColorMute": "#282828",
+      "indigoColor": "#2c3e50",
+      "dividerColorLight1": "#3c3c3c4a",
+      "dividerColorLight2": "#3c3c3c1f",
+      "dividerColorDark1": "#545454a6",
+      "dividerColorDark2": "#5454547a",
+      "textColorLight1": "#2c3e50",
+      "textColorLight2": "#3c3c3ca8",
+      "textColorDark1": "#FFFFFF",
+      "textColorDark2": "#ebebeba3",
+      "primaryColor": "#3478f7",
+      "primaryColorHover": "#2ea0f6",
+      "primaryColorPressed": "#286ebf",
+      "primaryColorActive": "#d1e8ff",
+      "infoColor": "#2080F0FF",
+      "infoColorHover": "#4098FCFF",
+      "infoColorPressed": "#1060C9FF",
+      "infoColorActive": "#4098FCFF",
+      "successColor": "#18A058FF",
+      "successColorHover": "#F4511E",
+      "successColorPressed": "#0C7A43FF",
+      "successColorActive": "#F4511E",
+      "warningColor": "#F0A020FF",
+      "warningColorHover": "#FCB040FF",
+      "warningColorPressed": "#C97C10FF",
+      "warningColorActive": "#FCB040FF",
+      "errorColor": "#D03050FF",
+      "errorColorHover": "#DE576DFF",
+      "errorColorPressed": "#AB1F3FFF",
+      "errorColorActive": "#DE576DFF"
+    }
+  }
+}

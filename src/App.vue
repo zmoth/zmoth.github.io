@@ -1,37 +1,131 @@
-<script setup lang="ts">
-import HomeView from './views/HomeView.vue'
-import SettingsView from './views/SettingsView.vue'
-import { ref } from 'vue'
+<script setup>
+import { ref, reactive } from 'vue'
+import config from '@/../package.json'
+import { NDrawer, NDrawerContent, NTag, NDynamicInput, NButton, NTabs, NTabPane } from 'naive-ui'
+import { useSloganStore } from '@/stores'
+import { useBreakpoints } from '@vueuse/core'
+import AppProvider from '@/components/common/AppProvider.vue'
 
-const s = ref(false)
-const messages = ref<string[]>([])
-function text(e: any) {
-  messages.value = e.split('\n\n')
-  messages.value = messages.value.filter((i) => i && i.trim())
+const show = ref(false)
+
+const sloganStore = useSloganStore()
+
+// 移动端适配
+const breakpointsEnum = {
+  xl: 1280,
+  lg: 1024,
+  md: 768,
+  sm: 640,
 }
+const breakpoints = reactive(useBreakpoints(breakpointsEnum))
+const isMobile = breakpoints.smaller('sm')
+const isPad = breakpoints.between('sm', 'md')
 
-var timeOutEvent = 0 //记录触摸时长
-
-function goTouchstart() {
-  timeOutEvent = 0
-  timeOutEvent = setTimeout(function () {
-    timeOutEvent = 0
-    //  处理长按事件...
-    s.value = true
-  }, 600)
+function toReleaseUrl() {
+  window.open('https://github.com/zmoth/zmoth.github.io/releases', '_blank')
 }
-//手如果在600毫秒内就释放，则取消长按事件
-function goTouchend() {
-  timeOutEvent = 0
-  if (timeOutEvent !== 0) {
-    //  处理单击事件
-  }
+function toGithubUrl() {
+  window.open('https://github.com/zmoth', '_blank')
+}
+function toLicenseUrl() {
+  window.open(
+    'https://github.com/zmoth/zmoth.github.io/blob/693173c6ce59215fff36845dfadd8a997d6bf9f8/LICENCE',
+    '_blank',
+  )
 }
 </script>
 
 <template>
-  <HomeView :text="messages" @click="s = true" />
-  <SettingsView :drawer="s" @change="text" @close="s = false" />
+  <AppProvider bg-light_soft dark:bg-dark text-text_light_1 dark:text-text_dark_2>
+    <div w-full h-screen flex justify-center items-center>
+      <Transition name="fade" mode="out-in" appear>
+        <div
+          @click="show = true"
+          :key="sloganStore.currentSlogan"
+          text-7xl
+          font-bold
+          cursor-pointer
+          select-none
+        >
+          {{ sloganStore.currentSlogan }}
+        </div>
+      </Transition>
+    </div>
+
+    <n-drawer
+      v-model:show="show"
+      :placement="isMobile || isPad ? 'bottom' : 'right'"
+      :width="500"
+      :height="'full'"
+      h-full
+      bg-light_soft
+      dark:bg-dark
+    >
+      <n-drawer-content :native-scrollbar="false">
+        <template #header>设置</template>
+
+        <n-tabs type="segment" animated>
+          <n-tab-pane name="chap1" tab="Slogen">
+            <n-dynamic-input
+              v-model:value="sloganStore.content"
+              :on-update:value="sloganStore.updateSloganContent"
+              show-sort-button
+              :min="1"
+              placeholder="想点骚话"
+            />
+          </n-tab-pane>
+          <n-tab-pane name="chap2" tab="关于">
+            <div flex justify-around p-3>
+              <n-tag
+                round
+                :bordered="false"
+                @click="toGithubUrl"
+                cursor-pointer
+                color-primary
+                bg-primary_active
+              >
+                {{ config.author }}
+              </n-tag>
+              <n-tag
+                round
+                :bordered="false"
+                @click="toReleaseUrl"
+                cursor-pointer
+                color-primary
+                bg-primary_active
+              >
+                {{ config.version }}
+              </n-tag>
+              <n-tag
+                round
+                :bordered="false"
+                @click="toLicenseUrl"
+                cursor-pointer
+                color-primary
+                bg-primary_active
+              >
+                {{ config.license }}
+              </n-tag>
+            </div>
+          </n-tab-pane>
+        </n-tabs>
+
+        <template #footer>
+          <n-button round @click="show = !show">试试</n-button>
+        </template>
+      </n-drawer-content>
+    </n-drawer>
+  </AppProvider>
 </template>
 
-<style scoped></style>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 300ms ease-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
