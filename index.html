@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./resource/loading.css" />
 
     <!-- 点击输入框不会被放大 -->
     <meta
@@ -13,8 +14,12 @@
     <title>Moth</title>
   </head>
 
-  <body>
-    <div id="app"></div>
+  <body bg-light_soft dark:bg-dark text-text_light_1 dark:text-text_dark_2>
+    <div id="app" bg-inherit text-inherit>
+      <div class="loading-container">
+        <div class="loading-title">Moth</div>
+      </div>
+    </div>
     <script type="module" src="./src/main.js"></script>
   </body>
 </html>
