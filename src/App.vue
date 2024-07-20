@@ -1,7 +1,16 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import config from '@/../package.json'
-import { NDrawer, NDrawerContent, NTag, NDynamicInput, NButton, NTabs, NTabPane } from 'naive-ui'
+import {
+  NDrawer,
+  NDrawerContent,
+  NTag,
+  NDynamicInput,
+  NInput,
+  NButton,
+  NTabs,
+  NTabPane,
+} from 'naive-ui'
 import { useSloganStore } from '@/stores'
 import { useBreakpoints } from '@vueuse/core'
 import AppProvider from '@/components/common/AppProvider.vue'
@@ -37,7 +46,17 @@ function toLicenseUrl() {
 
 <template>
   <AppProvider bg-light_soft dark:bg-dark text-text_light_1 dark:text-text_dark_2>
-    <div w-full h-screen flex justify-center items-center>
+    <div
+      class="no-scrollbar"
+      w-full
+      h-screen
+      flex
+      justify-center
+      items-center
+      overflow-y-hidden
+      overflow-y-scroll
+      whitespace-break-spaces
+    >
       <Transition name="fade" mode="out-in" appear>
         <div
           @click="show = true"
@@ -46,6 +65,8 @@ function toLicenseUrl() {
           font-bold
           cursor-pointer
           select-none
+          break-all
+          p-16
         >
           {{ sloganStore.currentSlogan }}
         </div>
@@ -71,8 +92,24 @@ function toLicenseUrl() {
               :on-update:value="sloganStore.updateSloganContent"
               show-sort-button
               :min="1"
-              placeholder="想点骚话"
-            />
+              p-1
+            >
+              <template #default="slogen">
+                <n-input
+                  v-model:value="slogen.value"
+                  :on-update:value="
+                    (value) => {
+                      slogen.value = value
+                      sloganStore.updateSlogan(slogen.index, slogen.value)
+                    }
+                  "
+                  :autofocus="false"
+                  type="textarea"
+                  placeholder="想点骚话"
+                  rounded-lg
+                />
+              </template>
+            </n-dynamic-input>
           </n-tab-pane>
           <n-tab-pane name="chap2" tab="关于">
             <div flex justify-around p-3>
@@ -127,5 +164,14 @@ function toLicenseUrl() {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 </style>

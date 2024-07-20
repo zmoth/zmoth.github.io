@@ -22,7 +22,11 @@ export const useSloganStore = defineStore('slogan', {
     },
     updateSloganContent(newSlogan) {
       this.content = newSlogan
-      lStorage.set('slogan', newSlogan)
+      lStorage.set('slogan', this.content)
+    },
+    updateSlogan(index, newSlogan) {
+      this.content[index] = newSlogan
+      lStorage.set('slogan', this.content)
     },
   },
 })
