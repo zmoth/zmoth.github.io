@@ -31,6 +31,14 @@ export const useSloganStore = defineStore('slogan', {
   },
 })
 
-setInterval(() => {
-  useSloganStore().updateIndex()
-}, 3000)
+let lastUpdateTimestamp = 0 // 记录最后一次更新的时间戳
+
+function updateByTimestamp() {
+  const now = Date.parse(new Date()) / 1000
+  if ((now - lastUpdateTimestamp) % 3 === 0 && now !== lastUpdateTimestamp) {
+    useSloganStore().updateIndex()
+    lastUpdateTimestamp = now
+  }
+}
+
+setInterval(updateByTimestamp, 100)
