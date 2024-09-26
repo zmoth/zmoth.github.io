@@ -37,10 +37,7 @@ function toGithubUrl() {
   window.open('https://github.com/zmoth', '_blank')
 }
 function toLicenseUrl() {
-  window.open(
-    'https://github.com/zmoth/zmoth.github.io/blob/693173c6ce59215fff36845dfadd8a997d6bf9f8/LICENCE',
-    '_blank',
-  )
+  window.open('https://github.com/zmoth/zmoth.github.io?tab=License-1-ov-file#readme', '_blank')
 }
 </script>
 
